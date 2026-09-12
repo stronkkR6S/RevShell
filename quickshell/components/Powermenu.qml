@@ -15,25 +15,30 @@ Rectangle{
     // color : root.isClicked ? Theme.vibrantYellow : Theme.gray
     color: Theme.vibrantOrange
 
-Image {
+// Image {
+//     anchors.centerIn: parent
+
+//     width: 40
+//     height: 24
+
+//     source: Qt.resolvedUrl("../icons/power.svg")
+//     fillMode: Image.PreserveAspectFit
+
+//     smooth: true
+//     asynchronous: true
+
+//     sourceSize: Qt.size(25, 25)
+//     layer.enabled: true
+//     layer.effect: MultiEffect {
+//     colorization: 1.0
+//     colorizationColor: Theme.background 
+
+//     }
+Text{
     anchors.centerIn: parent
+    text: ""
+    font.pixelSize: 25
 
-    width: 40
-    height: 24
-
-    source: Qt.resolvedUrl("../icons/power.svg")
-    fillMode: Image.PreserveAspectFit
-
-    smooth: true
-    asynchronous: true
-
-    sourceSize: Qt.size(25, 25)
-    layer.enabled: true
-    layer.effect: MultiEffect {
-    colorization: 1.0
-    colorizationColor: Theme.background 
-
-    }
 }
 Loader {
     id: powermenupop
