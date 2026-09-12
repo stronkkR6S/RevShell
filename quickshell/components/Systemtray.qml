@@ -14,15 +14,11 @@ ColumnLayout {
     }
     
 
-    Text {
-        text: "Tray: "  
-        color: "red"
-    }
 
     Repeater {
         model: SystemTray.items
 
-        delegate: Image {
+       delegate: Image {
             required property SystemTrayItem modelData
 
             source: modelData.icon

@@ -19,11 +19,12 @@ import QtQuick
       // color: Theme.background
     }
 
-        Clock{}
+        CombinedCM{}
         Workspace{}
         Powermenu{}
         Network{}
         CombinedVB{}
+        Media{}
         // Systemtray{}
 
 

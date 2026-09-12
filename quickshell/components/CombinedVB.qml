@@ -191,7 +191,7 @@ Item {
                         command: [
                             "sh",
                             "-c",
-                            "wpctl set-mute 54 toggle"
+                            "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
                         ]
                     }
 
