@@ -148,3 +148,8 @@ html {
         display: none !important;
     }
 }
+
+.open-customization-button, .personalize-button {
+  display: none !important;
+}
+

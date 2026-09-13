@@ -229,6 +229,3 @@ window,
 .tabbrowser-tab[selected] .tab-background {
     background: #FF8732 !important;
 }
-.customize-button {
-  display: none !important;
-}
