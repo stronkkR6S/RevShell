@@ -222,10 +222,13 @@ window,
 
 /* Inactive tabs */
 .tabbrowser-tab:not([selected]) .tab-background {
-    background: #020202 !important;
+    background: #0D0D0D !important;
 }
 
 /* Active tab */
 .tabbrowser-tab[selected] .tab-background {
     background: #FF8732 !important;
+}
+.customize-button {
+  display: none !important;
 }
