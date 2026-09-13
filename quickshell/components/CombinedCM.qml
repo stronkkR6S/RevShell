@@ -3,6 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import Quickshell
 import Quickshell.Services.Mpris
+import Qt5Compat.GraphicalEffects
 
 Item {
     id: box
@@ -59,10 +60,7 @@ Item {
                 repeat: true
 
                 onTriggered: {
-                    clock.text = Qt.formatTime(
-                        new Date(),
-                        "h:mm ap"
-                    ).replace(/ am| pm/i, "")
+                    clock.text = Qt.formatTime(new Date(), "h:mm ap").replace(/ am| pm/i, "");
                 }
             }
         }
@@ -87,7 +85,8 @@ Item {
                 spacing: 12
 
                 Image {
-                visible: Mpris.players.values.length > 0
+                    id: playerArt // Added an ID for safe scoping
+                    visible: Mpris.players.values.length > 0
                     Layout.preferredWidth: visible ? 50 : 0
                     Layout.preferredHeight: visible ? 30 : 0
 
@@ -96,12 +95,21 @@ Item {
                     fillMode: Image.PreserveAspectCrop
                     asynchronous: true
                     smooth: true
-                    clip: true
+
+                    //we need layer for radius in picture
+                    layer.enabled: true
+                    layer.effect: OpacityMask {
+                        maskSource: Rectangle {
+                            width: playerArt.width
+                            height: playerArt.height
+                            radius: 11
+                        }
+                    }
                 }
 
                 // Previous
                 Text {
-                visible: Mpris.players.values.length > 0
+                    visible: Mpris.players.values.length > 0
                     text: "󰒮"
                     color: Theme.foreground
                     font.pixelSize: 28
@@ -110,17 +118,15 @@ Item {
                         anchors.fill: parent
 
                         onClicked: {
-                            player.previous()
+                            player.previous();
                         }
                     }
                 }
 
                 // Play / Pause
                 Text {
-                visible: Mpris.players.values.length > 0
-                    text: player.playbackState === MprisPlaybackState.Paused
-                        ? ""
-                        : ""
+                    visible: Mpris.players.values.length > 0
+                    text: player.playbackState === MprisPlaybackState.Paused ? "" : ""
 
                     color: Theme.foreground
                     font.pixelSize: 22
@@ -129,14 +135,14 @@ Item {
                         anchors.fill: parent
 
                         onClicked: {
-                            player.togglePlaying()
+                            player.togglePlaying();
                         }
                     }
                 }
 
                 // Next
                 Text {
-                visible: Mpris.players.values.length > 0
+                    visible: Mpris.players.values.length > 0
                     text: "󰒭"
                     color: Theme.foreground
                     font.pixelSize: 28
@@ -145,7 +151,7 @@ Item {
                         anchors.fill: parent
 
                         onClicked: {
-                            player.next()
+                            player.next();
                         }
                     }
                 }

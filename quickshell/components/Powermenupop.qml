@@ -7,7 +7,7 @@ import Quickshell.Io
 PanelWindow {
     id: toplevel
 
-    signal closeRequested()
+    signal closeRequested
 
     exclusionMode: ExclusionMode.Ignore
     WlrLayershell.layer: WlrLayer.Overlay
@@ -63,9 +63,7 @@ PanelWindow {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
 
-                    color: activeFocus
-                           ? Theme.vibrantOrange
-                           : "transparent"
+                    color: activeFocus ? Theme.vibrantOrange : "transparent"
 
                     radius: 25
                     focus: index === 0
@@ -75,45 +73,39 @@ PanelWindow {
 
                         text: modelData.icon
                         font.pixelSize: modelData.size
-                        color: Theme.foreground                  }
+                        color: Theme.foreground
+                    }
 
                     MouseArea {
                         anchors.fill: parent
                         hoverEnabled: true
 
                         onClicked: {
-                            actionProcess.running = true
+                            actionProcess.running = true;
                         }
                     }
 
                     Process {
                         id: actionProcess
 
-                        command: [
-                            "sh",
-                            "-c",
-                            modelData.action
-                        ]
+                        command: ["sh", "-c", modelData.action]
                     }
 
                     Keys.onPressed: event => {
                         if (event.key === Qt.Key_Tab) {
-                            let nextIndex = (index + 1) % repeater.count
+                            let nextIndex = (index + 1) % repeater.count;
 
-                            repeater.itemAt(nextIndex).forceActiveFocus()
+                            repeater.itemAt(nextIndex).forceActiveFocus();
 
-                            event.accepted = true
-
+                            event.accepted = true;
                         } else if (event.key === Qt.Key_Escape) {
-                            closeRequested()
+                            closeRequested();
 
-                            event.accepted = true
+                            event.accepted = true;
+                        } else if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
+                            actionProcess.running = true;
 
-                        } else if (event.key === Qt.Key_Return ||
-                                   event.key === Qt.Key_Enter) {
-                            actionProcess.running = true
-
-                            event.accepted = true
+                            event.accepted = true;
                         }
                     }
                 }

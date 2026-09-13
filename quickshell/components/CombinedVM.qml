@@ -115,7 +115,7 @@ Item {
                             }
                         }
 
-                        // VOLUME MOUSE AREA
+                    //volume area
                         MouseArea {
                             id: volumeMouseArea
 
@@ -160,7 +160,7 @@ Item {
                         Layout.preferredWidth: 7
                     }
 
-                    // MICROPHONE
+                    // Microphone 
                     Microphone {
                         id: microphone
 
