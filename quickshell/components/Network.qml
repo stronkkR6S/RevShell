@@ -70,7 +70,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
 
         height: 34
-        width: 120
+        width: 110
         radius: 20
         color: Theme.blue
 
