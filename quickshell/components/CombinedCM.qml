@@ -87,7 +87,7 @@ Item {
                 Image {
                     id: playerArt // Added an ID for safe scoping
                     visible: Mpris.players.values.length > 0
-                    Layout.preferredWidth: visible ? 50 : 0
+                    Layout.preferredWidth: visible ? 60 : 0
                     Layout.preferredHeight: visible ? 30 : 0
 
                     source: player ? player.trackArtUrl : ""
@@ -102,7 +102,7 @@ Item {
                         maskSource: Rectangle {
                             width: playerArt.width
                             height: playerArt.height
-                            radius: 11
+                            radius: 9
                         }
                     }
                 }
