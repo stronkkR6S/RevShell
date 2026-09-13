@@ -15,15 +15,15 @@ import QtQuick
 
     Rectangle {
       anchors.fill: parent
-      color: "#f7ebeb"
       // color: Theme.background
+      color: "#CEDEDE"
     }
 
         CombinedCM{}
+        CombinedVM{}
+        CombinedBP{}
         Workspace{}
-        Powermenu{}
         Network{}
-        CombinedVB{}
         Media{}
         // Systemtray{}
 

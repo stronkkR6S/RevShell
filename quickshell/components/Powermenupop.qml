@@ -24,7 +24,7 @@ PanelWindow {
         anchors.fill: parent
         anchors.rightMargin: 30
 
-        color: Theme.powermenubackground
+        color: Theme.background
         radius: 25
 
         ColumnLayout {
@@ -75,8 +75,7 @@ PanelWindow {
 
                         text: modelData.icon
                         font.pixelSize: modelData.size
-                        color: Theme.background
-                    }
+                        color: Theme.foreground                  }
 
                     MouseArea {
                         anchors.fill: parent

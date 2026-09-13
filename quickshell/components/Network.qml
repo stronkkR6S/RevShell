@@ -66,26 +66,28 @@ Item {
 
     Rectangle {
         anchors.right: parent.right
-        anchors.rightMargin: 197
+        anchors.rightMargin: 250
         anchors.verticalCenter: parent.verticalCenter
 
         height: 34
-        width: 100
+        width: 120
         radius: 20
         color: Theme.blue
 
         RowLayout {
             anchors.centerIn: parent
-            spacing: 1
+            spacing: 4
 
             Text {
                 text: networkbackend.signalIcon
                 font.pixelSize: 27
+                color: Theme.foreground
             }
 
             Text {
                 text: networkbackend.currentSsid
                 font.pixelSize: 15
+                color: Theme.foreground
             }
         }
     }

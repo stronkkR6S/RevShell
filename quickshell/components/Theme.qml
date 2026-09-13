@@ -4,10 +4,11 @@ import QtQuick
 
 QtObject {
     //colors
-    readonly property color background: "#020202"
+    // readonly property color background: "#0D0D0D"
+    readonly property color background: "#CEDEDE"
     readonly property color powermenubackground: "#f7ebeb"
     // readonly property color powermenubackground: "#020202"
-    readonly property color foreground: "#bfbdb6"
+    readonly property color foreground: "#0D0D0D"
 
     readonly property color black: "#0D0D0D"
     readonly property color darkGray: "#2d3640"

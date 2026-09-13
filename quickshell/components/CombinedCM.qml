@@ -43,7 +43,7 @@ Item {
             Text {
                 id: clock
 
-                color: Theme.background
+                color: Theme.foreground
 
                 anchors.centerIn: parent
 
@@ -103,7 +103,7 @@ Item {
                 Text {
                 visible: Mpris.players.values.length > 0
                     text: "󰒮"
-                    color: Theme.background
+                    color: Theme.foreground
                     font.pixelSize: 28
 
                     MouseArea {
@@ -122,7 +122,7 @@ Item {
                         ? ""
                         : ""
 
-                    color: Theme.background
+                    color: Theme.foreground
                     font.pixelSize: 22
 
                     MouseArea {
@@ -138,7 +138,7 @@ Item {
                 Text {
                 visible: Mpris.players.values.length > 0
                     text: "󰒭"
-                    color: Theme.background
+                    color: Theme.foreground
                     font.pixelSize: 28
 
                     MouseArea {
