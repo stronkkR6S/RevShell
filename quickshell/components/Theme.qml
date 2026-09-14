@@ -4,10 +4,8 @@ import QtQuick
 
 QtObject {
     //colors
-    // readonly property color background: "#0D0D0D"
     readonly property color background: "#CEDEDE"
-    readonly property color powermenubackground: "#f7ebeb"
-    // readonly property color powermenubackground: "#020202"
+    readonly property color powermenubackground: "#CEDEDE"
     readonly property color foreground: "#0D0D0D"
 
     readonly property color black: "#0D0D0D"
@@ -28,7 +26,9 @@ QtObject {
     readonly property color vibrantOrange: "#FF8732"
 
     //other values
+    // 
     readonly property int barSideMargin: 0
+
     // readonly property int barRounding: 20
     readonly property int powermenuRounding: 20
     readonly property int barWidth: 45

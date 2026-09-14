@@ -24,7 +24,7 @@ PanelWindow {
         anchors.fill: parent
         anchors.rightMargin: 30
 
-        color: Theme.background
+        color: Theme.powermenubackground
         radius: 25
 
         ColumnLayout {

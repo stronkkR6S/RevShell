@@ -7,7 +7,7 @@ Rectangle {
     id: root
 
     anchors.right: parent.right
-    anchors.rightMargin: 10
+    anchors.rightMargin: 15
     anchors.verticalCenter: parent.verticalCenter
 
     width: 110

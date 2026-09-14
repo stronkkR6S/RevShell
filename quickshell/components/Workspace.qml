@@ -24,7 +24,7 @@ Rectangle {
             delegate: Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
 
-                width: modelData.active ? 38 : 25
+                width: modelData.active ? 43 : 25
                 height: 22
                 radius: 15
 
@@ -56,7 +56,7 @@ Rectangle {
 
                 Behavior on width {
                     NumberAnimation {
-                        duration: 250
+                        duration: 400
                         easing.type: Easing.InOutQuad
                     }
                 }

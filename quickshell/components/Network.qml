@@ -66,7 +66,7 @@ Item {
 
     Rectangle {
         anchors.right: parent.right
-        anchors.rightMargin: 250
+        anchors.rightMargin: 255
         anchors.verticalCenter: parent.verticalCenter
 
         height: 34
