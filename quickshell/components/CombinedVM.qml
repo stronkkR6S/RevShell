@@ -60,9 +60,9 @@ Item {
             verticalCenter: parent.verticalCenter
             rightMargin: 135
         }
-        height: 34
-        width: 110
-        radius: 25
+        height: Theme.module_height
+        width: Theme.module_width
+    radius: Theme.module_radius
 
         color: volumeMouseArea.containsMouse ? Theme.cyan : Theme.blue
 

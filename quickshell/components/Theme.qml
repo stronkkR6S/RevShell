@@ -3,7 +3,6 @@ pragma Singleton
 import QtQuick
 
 QtObject {
-    //colors
     readonly property color background: "#CEDEDE"
     readonly property color powermenubackground: "#CEDEDE"
     readonly property color foreground: "#0D0D0D"
@@ -11,6 +10,8 @@ QtObject {
     readonly property color black: "#0D0D0D"
     readonly property color darkGray: "#2d3640"
     readonly property color gray: "#5c6773"
+    readonly property color customGray: "#808080"
+    readonly property color modulefg: "#a6a6a6"
     readonly property color lightGray: "#dedede"
     readonly property color white: "#ffffff"
 
@@ -26,13 +27,23 @@ QtObject {
     readonly property color vibrantOrange: "#FF8732"
 
     //other values
-    // 
     readonly property int barSideMargin: 0
-
-    // readonly property int barRounding: 20
     readonly property int powermenuRounding: 20
     readonly property int barWidth: 45
     readonly property int barRotation: -90
     readonly property int fontSize: 17
+    readonly property int dashboard_radius: 15
+    readonly property int module_radius: 20
+    readonly property int module_height: 34
+    readonly property int module_width: 110
+    readonly property int media_width: 190
+    readonly property int dashboard_height: 550
+    readonly property int dashboard_width: 550
+    readonly property int dashboard_font: 15
+    readonly property int dashboard_slider_radius: 100
+    readonly property int dashboard_slider_height: 30
+    readonly property int dashboard_slider_width: 300
+    readonly property int dashboard_modules_radius: 15
+
 
 }

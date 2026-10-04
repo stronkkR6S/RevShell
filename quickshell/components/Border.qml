@@ -6,7 +6,7 @@ import Quickshell.Wayland
 Item {
     id: border
 
-    property int thickness: 14
+    property int thickness: 16
 
     // left
     PanelWindow {
@@ -57,7 +57,7 @@ Item {
         }
 
         implicitWidth: border.thickness
-        exclusiveZone: border.thickness
+        // exclusiveZone: border.thickness
         color: "transparent"
         Shape {
             anchors.fill: parent

@@ -10,9 +10,9 @@ Rectangle {
     anchors.rightMargin: 15
     anchors.verticalCenter: parent.verticalCenter
 
-    width: 110
-    height: 34
-    radius: 40
+        height: Theme.module_height
+        width: Theme.module_width
+    radius: Theme.module_radius
 
     color: Theme.vibrantOrange
 

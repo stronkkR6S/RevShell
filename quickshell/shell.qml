@@ -7,6 +7,7 @@ Scope {
   id: root
   Bar{}
   Activatelinux{}
+  // Applauncher{}
 
 }
 

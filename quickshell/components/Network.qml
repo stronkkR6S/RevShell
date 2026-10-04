@@ -56,7 +56,7 @@ Item {
     }
 
     Timer {
-        interval: 5000
+        interval: 1000
         running: true
         repeat: true
         triggeredOnStart: true
@@ -69,9 +69,9 @@ Item {
         anchors.rightMargin: 255
         anchors.verticalCenter: parent.verticalCenter
 
-        height: 34
-        width: 110
-        radius: 20
+        height: Theme.module_height
+        width: Theme.module_width
+        radius: Theme.module_radius
         color: Theme.blue
 
         RowLayout {

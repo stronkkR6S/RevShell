@@ -15,8 +15,8 @@ Item {
     SwipeView {
         id: swipe
 
-        height: 34
-        width: currentIndex === 0 ? 120 : 190
+        height: Theme.module_height
+        width: currentIndex === 0 ? Theme.module_width : Theme.media_width
 
         anchors.centerIn: parent
         clip: true
@@ -73,7 +73,6 @@ Item {
 
             Rectangle {
                 anchors.fill: parent
-                height: 34
                 visible: Mpris.players.values.length > 0
 
                 color: Theme.vibrantOrange
@@ -95,6 +94,7 @@ Item {
                     fillMode: Image.PreserveAspectCrop
                     asynchronous: true
                     smooth: true
+                    clip:true
 
                     //we need layer for radius in picture
                     layer.enabled: true

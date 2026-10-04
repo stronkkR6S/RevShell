@@ -25,7 +25,7 @@ ShellRoot{
         CombinedBP {}
         Workspace {}
         Network {}
-        Media {}
+        Dashboard{}
     }
     Border{}
 
