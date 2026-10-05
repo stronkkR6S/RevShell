@@ -17,3 +17,4 @@ Rectangle {
     DashboardScreenshot{}
     DashboardMotiv{}
 }
+
