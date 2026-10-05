@@ -80,7 +80,7 @@ property real thirdAngle: Math.min(Math.max(totalSweep - 200, 0), 100)
             top: parent.top
             topMargin: 105
             left: parent.left
-            leftMargin: 63
+            leftMargin: 50
         }
         text: "CPUT: " + root.cpuTemp + "°"
         font.pixelSize: 15

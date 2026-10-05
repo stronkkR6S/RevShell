@@ -83,9 +83,9 @@ property real thirdAngle: Math.min(Math.max(totalSweep - 200, 0), 100)
             top: parent.top
             topMargin: 105
             left: parent.left
-            leftMargin: 63
+            leftMargin: 50
         }
-        text: "MEM: " + root.usedmemoryUsage
+        text: "MEMU: " + root.usedmemoryUsage
         font.pixelSize: 15
     }
 
