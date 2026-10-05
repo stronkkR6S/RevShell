@@ -126,7 +126,7 @@ Rectangle {
                     topMargin: 15
                 }
                 font.bold: true
-                text: dashboardMedia.player && dashboardMedia.player.isPlaying ? formatTime(dashboardMedia.currentPosition) : "0:00"
+                text: dashboardMedia.player ? formatTime(dashboardMedia.currentPosition) : "0:00"
             }
             Text {
                 id: totalLength
@@ -146,7 +146,7 @@ Rectangle {
                     left: parent.left
                     leftMargin: 230
                 }
-                text: dashboardMedia.player && dashboardMedia.player.isPlaying ? formatTime(dashboardMedia.player.length) : "0:00"
+                text: dashboardMedia.player ? formatTime(dashboardMedia.player.length) : "0:00"
                 font.bold: true
             }
         }
