@@ -89,7 +89,7 @@ Item {
                     Layout.preferredWidth: visible ? 60 : 0
                     Layout.preferredHeight: visible ? 30 : 0
 
-                    source: player ? player.trackArtUrl : ""
+                    source: box.player? box.player.trackArtUrl : ""
 
                     fillMode: Image.PreserveAspectCrop
                     asynchronous: true
@@ -118,7 +118,7 @@ Item {
                         anchors.fill: parent
 
                         onClicked: {
-                            player.previous();
+                            box.player.previous();
                         }
                     }
                 }
@@ -126,7 +126,7 @@ Item {
                 // Play / Pause
                 Text {
                     visible: Mpris.players.values.length > 0
-                    text: player.playbackState === MprisPlaybackState.Paused ? "" : ""
+                    text: box.player.playbackState === MprisPlaybackState.Paused ? "" : ""
 
                     color: Theme.foreground
                     font.pixelSize: 22
@@ -135,7 +135,7 @@ Item {
                         anchors.fill: parent
 
                         onClicked: {
-                            player.togglePlaying();
+                            box.player.togglePlaying();
                         }
                     }
                 }
@@ -151,7 +151,7 @@ Item {
                         anchors.fill: parent
 
                         onClicked: {
-                            player.next();
+                            box.player.next();
                         }
                     }
                 }

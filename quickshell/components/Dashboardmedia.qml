@@ -13,10 +13,10 @@ Rectangle {
     Timer {
         id: position
         interval: 1000
-        running: player && player.playbackState === MprisPlaybackState.Playing
+        running: dashboardMedia.player && dashboardMedia.player.playbackState === MprisPlaybackState.Playing
         repeat: true
         onTriggered: {
-            onTriggered: player.positionChanged();
+            dashboardMedia.currentPosition = dashboardMedia.player.position;
         }
     }
 
@@ -59,7 +59,7 @@ Rectangle {
             asynchronous: true
             smooth: true
             clip: true
-            source: player ? player.trackArtUrl : "../icons/music.png" 
+            source: dashboardMedia.player ? dashboardMedia.player.trackArtUrl : "../icons/music.png"
             layer.enabled: true
             layer.effect: OpacityMask {
                 maskSource: Rectangle {
@@ -79,7 +79,7 @@ Rectangle {
             topMargin: 22
         }
         elide: Text.ElideRight
-        text: player ? player.trackTitle + (player.trackAlbum ? " — " + player.trackAlbum : "") : "Play Something"
+        text: dashboardMedia.player ? dashboardMedia.player.trackTitle + (dashboardMedia.player.trackAlbum ? " — " + dashboardMedia.player.trackAlbum : "") : "Play Something"
         font.bold: true
         font.pixelSize: 20
     }
@@ -88,9 +88,11 @@ Rectangle {
             visible: false
         }
         from: 0
-        value: player.position
+        to: dashboardMedia.player ? dashboardMedia.player.length : 0
+        value: dashboardMedia.currentPosition
         onMoved: {
-            player.position = value;
+            if (dashboardMedia.player)
+                dashboardMedia.player.position = value;
         }
 
         height: 10
@@ -109,19 +111,43 @@ Rectangle {
         Row {
             Text {
                 id: liveposition
+                function formatTime(seconds) {
+                    if (seconds <= 0)
+                        return "0:00";
+
+                    var totalSeconds = Math.floor(seconds);
+                    var minutes = Math.floor(totalSeconds / 60);
+                    var secs = totalSeconds % 60;
+
+                    return minutes + ":" + (secs < 10 ? "0" + secs : secs);
+                }
                 anchors {
                     top: parent.top
                     topMargin: 15
                 }
                 font.bold: true
-                text: {
-                    if (dashboardMedia.currentPosition <= 0)
+                text: dashboardMedia.player && dashboardMedia.player.isPlaying ? formatTime(dashboardMedia.currentPosition) : "0:00"
+            }
+            Text {
+                id: totalLength
+                function formatTime(seconds) {
+                    if (seconds <= 0)
                         return "0:00";
-                    let totalSeconds = Math.floor(dashboardMedia.currentPosition);
-                    let minutes = Math.floor(totalSeconds / 60);
-                    let seconds = totalSeconds % 60;
-                    return minutes + ":" + (seconds < 10 ? "0" + seconds : seconds);
+
+                    var totalSeconds = Math.floor(seconds);
+                    var minutes = Math.floor(totalSeconds / 60);
+                    var secs = totalSeconds % 60;
+
+                    return minutes + ":" + (secs < 10 ? "0" + secs : secs);
                 }
+                anchors {
+                    top: parent.top
+                    topMargin: 15
+                    left: parent.left
+                    leftMargin: 230
+                }
+                text: dashboardMedia.player && dashboardMedia.player.isPlaying ? formatTime(dashboardMedia.player.length) : "0:00"
+                font.bold: true
             }
         }
         Row {
@@ -148,7 +174,7 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        player.previous();
+                        dashboardMedia.player.previous();
                     }
                 }
             }
@@ -161,14 +187,14 @@ Rectangle {
                 color: Theme.customGray
                 Text {
                     anchors.centerIn: parent
-                    text: player ? (player.playbackState === MprisPlaybackState.Paused ? "" : "") : ""
+                    text: dashboardMedia.player ? (dashboardMedia.player.playbackState === MprisPlaybackState.Paused ? "" : "") : ""
                     font.pixelSize: 21
                 }
 
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        player.togglePlaying();
+                        dashboardMedia.player.togglePlaying();
                     }
                 }
             }
@@ -187,17 +213,17 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        player.next();
+                        dashboardMedia.player.next();
                     }
                 }
             }
-            
-                AnimatedImage {
-                    width: 28
-                    height: 28
 
-                    source: "../icons/kurukuru.gif"
-                }
+            AnimatedImage {
+                width: 28
+                height: 28
+
+                source: "../icons/kurukuru.gif"
+            }
         }
     }
 }
