@@ -7,17 +7,16 @@ import Qt5Compat.GraphicalEffects
 Rectangle {
     id: dashboardMedia
 
-    property var player: Mpris.players.values[0]
-    property real currentPosition: player ? player.position : 0
+    // property var choosesource: Mpris.players.values
+    // property var player: Mpris.players.values[0]
+    //
+    property var players: Mpris.players.values
+    property int sourceIndex: 0
+    property var player: players.length > 0 ? players[sourceIndex] : null
 
-    Timer {
-        id: position
-        interval: 1000
+    FrameAnimation {
         running: dashboardMedia.player && dashboardMedia.player.playbackState === MprisPlaybackState.Playing
-        repeat: true
-        onTriggered: {
-            dashboardMedia.currentPosition = dashboardMedia.player.position;
-        }
+        onTriggered: dashboardMedia.player.positionChanged()
     }
 
     anchors {
@@ -89,12 +88,22 @@ Rectangle {
         }
         from: 0
         to: dashboardMedia.player ? dashboardMedia.player.length : 0
-        value: dashboardMedia.currentPosition
+        value: dashboardMedia.player.position
+
         onMoved: {
             if (dashboardMedia.player)
                 dashboardMedia.player.position = value;
         }
 
+        onPressedChanged: {
+            if (!dashboardMedia.player)
+                return;
+            if (pressed) {
+                dashboardMedia.player.pause();
+            } else {
+                dashboardMedia.player.play();
+            }
+        }
         height: 10
         width: 200
         anchors {
@@ -126,7 +135,7 @@ Rectangle {
                     topMargin: 15
                 }
                 font.bold: true
-                text: dashboardMedia.player ? formatTime(dashboardMedia.currentPosition) : "0:00"
+                text: dashboardMedia.player ? formatTime(dashboardMedia.player.position) : "0:00"
             }
             Text {
                 id: totalLength
@@ -223,6 +232,65 @@ Rectangle {
                 height: 28
 
                 source: "../icons/kurukuru.gif"
+            }
+            Rectangle {
+                id: sourceButton
+
+                width: 32
+                height: 32
+                radius: 8
+                color: "transparent"
+
+                Image {
+                    anchors.centerIn: parent
+                    width: 20
+                    height: 20
+                    function playerIcon(identity) {
+                        let id = identity.toLowerCase();
+
+                        if (id === "mozilla firefox")
+                            return "file:///usr/share/icons/Papirus/32x32/apps/firefox.svg";
+
+                        if (id === "spotify")
+                            return "file:///usr/share/icons/Papirus/32x32/apps/spotify.svg";
+
+                        if (id === "music player daemon")
+                            return "file:///usr/share/icons/Papirus/32x32/apps/mpd.svg";
+
+                        if (id === "vlc media player")
+                            return "file:///usr/share/icons/Papirus/32x32/apps/vlc.svg";
+
+                        if (id === "mpv")
+                            return "file:///usr/share/icons/Papirus/32x32/apps/mpv.svg";
+
+                        if (id === "strawberry")
+                            return "file:///usr/share/icons/Papirus/32x32/apps/strawberry.svg";
+
+                        return "";
+                    }
+
+                    source: playerIcon(dashboardMedia.player.identity)
+                    fillMode: Image.PreserveAspectFit
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+
+                    onClicked: {
+                        let players = Mpris.players.values;
+
+                        if (players.length === 0)
+                            return;
+
+                        let current = players.indexOf(dashboardMedia.player);
+                        let next = players[(current + 1) % players.length];
+                        //pause before switching
+                        if (dashboardMedia.player)
+                            dashboardMedia.player.pause();
+
+                        dashboardMedia.player = next;
+                    }
+                }
             }
         }
     }
