@@ -29,7 +29,7 @@ property real thirdAngle: Math.min(Math.max(totalSweep - 200, 0), 100)
 
     anchors {
         top: parent.top
-        topMargin: 170
+        topMargin: 200
         left: parent.left
         leftMargin: 330
     }

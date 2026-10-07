@@ -89,12 +89,12 @@ Item {
                     Layout.preferredWidth: visible ? 60 : 0
                     Layout.preferredHeight: visible ? 30 : 0
 
-                    source: box.player? box.player.trackArtUrl : ""
+                    source: box.player ? box.player.trackArtUrl : ""
 
                     fillMode: Image.PreserveAspectCrop
                     asynchronous: true
                     smooth: true
-                    clip:true
+                    clip: true
 
                     //we need layer for radius in picture
                     layer.enabled: true
@@ -126,7 +126,7 @@ Item {
                 // Play / Pause
                 Text {
                     visible: Mpris.players.values.length > 0
-                    text: box.player.playbackState === MprisPlaybackState.Paused ? "" : ""
+                    text: box.player ? (box.player.playbackState === MprisPlaybackState.Paused ? "" : "") : ""
 
                     color: Theme.foreground
                     font.pixelSize: 22

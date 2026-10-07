@@ -6,6 +6,13 @@ import Quickshell.Io
 Rectangle {
     id: root
 
+    IpcHandler{
+        target: "powermenu"
+        function toggle(): void{
+            powermenupop.active = !powermenupop.active
+        }
+    }
+
     anchors.right: parent.right
     anchors.rightMargin: 15
     anchors.verticalCenter: parent.verticalCenter

@@ -8,7 +8,7 @@ Rectangle {
     height: 100
     width: 220
     radius: Theme.module_radius
-    color: Theme.customGray
+    color: "transparent"
 
     property int weatherCode: -1
     property real temperature: 0
@@ -87,9 +87,9 @@ Rectangle {
 
     anchors {
         top: parent.top
-        topMargin: 40
+        topMargin: 10
         left: parent.left
-        leftMargin: 60
+        leftMargin: 50
     }
 
     Process {
@@ -137,6 +137,7 @@ Timer {
         text: root.weatherIcon(root.weatherCode)
 
         font.pixelSize: 60
+        color: "transparent"
     }
 
     Text {
@@ -150,6 +151,7 @@ Timer {
         text: Math.round(root.temperature)
 
         font.pixelSize: 35
+        color: "#E6E6E6"
     }
     Text {
         anchors {
@@ -162,6 +164,7 @@ Timer {
         text: " °C"
 
         font.pixelSize: 30
+        color: "#E6E6E6"
     }
     Text {
         anchors {
@@ -172,6 +175,7 @@ Timer {
         }
 
         text: root.weatherCondition(root.weatherCode)
+        color: "#E6E6E6"
 
         font.pixelSize: 15
     }

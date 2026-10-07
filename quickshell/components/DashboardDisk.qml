@@ -30,7 +30,7 @@ property real thirdAngle: Math.min(Math.max(totalSweep - 200, 0), 100)
 
     anchors {
         top: parent.top
-        topMargin: 350
+        topMargin: 370
         left: parent.left
         leftMargin: 210
     }
@@ -79,18 +79,14 @@ property real thirdAngle: Math.min(Math.max(totalSweep - 200, 0), 100)
         text: root.perdiskUsage + "  "
         font.pixelSize: 30
     }
-    ColumnLayout{
+    ColumnLayout {
     Text {
-        anchors {
-            top: parent.top
-            topMargin: 105
-            left: parent.left
-            leftMargin: 50
-        }
         text: "DISK: " + root.useddiskUsage + "G"
         font.pixelSize: 15
-    }
 
+        Layout.topMargin: 105
+        Layout.leftMargin: 50
+    }
 }
     Item {
 

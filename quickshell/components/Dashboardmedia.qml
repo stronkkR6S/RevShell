@@ -88,7 +88,7 @@ Rectangle {
         }
         from: 0
         to: dashboardMedia.player ? dashboardMedia.player.length : 0
-        value: dashboardMedia.player.position
+        value: dashboardMedia.player ? dashboardMedia.player.position : 0
 
         onMoved: {
             if (dashboardMedia.player)
@@ -117,7 +117,7 @@ Rectangle {
         backgroundColor: "white"
         rounding: 5
 
-        Row {
+        Item {
             Text {
                 id: liveposition
                 function formatTime(seconds) {
@@ -269,7 +269,7 @@ Rectangle {
                         return "";
                     }
 
-                    source: playerIcon(dashboardMedia.player.identity)
+                    source: dashboardMedia.player ? playerIcon(dashboardMedia.player.identity) : ""
                     fillMode: Image.PreserveAspectFit
                 }
 

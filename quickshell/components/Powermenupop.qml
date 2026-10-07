@@ -3,7 +3,6 @@ import QtQuick.Layouts
 import Quickshell
 import Quickshell.Wayland
 import Quickshell.Io
-
 PanelWindow {
     id: toplevel
 
@@ -48,7 +47,7 @@ PanelWindow {
                     {
                         icon: "",
                         size: 44,
-                        action: "loginctl lock-session"
+                        action: "qs ipc call lockscreen toggle"
                     },
                     {
                         icon: "󰒲",
@@ -113,3 +112,4 @@ PanelWindow {
         }
     }
 }
+

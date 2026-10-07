@@ -125,12 +125,10 @@ ShellRoot {
                 anchors.fill: parent
                 visible: columnn.selected === 3
 
-                DashboardWeather{}
-                // DashboardCalendar{}
-                DashboardEnv{}
                 DashboardCpu{}
                 DashboardMemory{}
                 DashboardDisk{}
+                DashboardImageEnv{}
             }
 
             Column {

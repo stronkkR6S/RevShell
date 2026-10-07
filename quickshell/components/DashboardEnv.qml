@@ -4,42 +4,40 @@ import Quickshell.Io
 
 Rectangle {
     id: root
+
     property string distroName: "Linux"
-    property var uptime: ""
+    property string uptime: ""
 
     anchors {
         top: parent.top
-        topMargin: 40
+        topMargin: 15
         left: parent.left
-        leftMargin: 290
+        leftMargin: 20
     }
 
     height: 100
     width: 240
     radius: Theme.module_radius
-    color: Theme.customGray
+    color: "transparent"
 
-    Rectangle {
+    Text {
+        text: Quickshell.env("USER").toUpperCase()
+        color: "white"
+        font.family: "orbitron"
+        font.weight: Font.Black
+        font.pixelSize: 15
+
         anchors {
-            left: parent.left
-            leftMargin: 10
             top: parent.top
-            topMargin: 12
-        }
-        radius: 15
-        color: "#a6a6a6"
-        width: 80
-        height: 80
-
-        Text {
-            anchors.centerIn: parent
-            text: ""
-            font.pixelSize: 40
+            left: parent.left
+            leftMargin: 20
+            topMargin: 10
         }
     }
 
     Process {
         id: autodistrofetch
+
         command: ["sh", "-c", "grep -Po '^PRETTY_NAME=\"\\K[^\"]+' /etc/os-release"]
         running: true
 
@@ -49,8 +47,10 @@ Rectangle {
             }
         }
     }
+
     Process {
         id: uptime
+
         command: ["sh", "-c", "uptime -p | sed -E 's/^up //; s/ hours?, / : /; s/ minutes?/ minute/'"]
         running: true
 
@@ -60,80 +60,52 @@ Rectangle {
             }
         }
     }
-    Timer{
+
+    Timer {
         interval: 60000
         running: true
         repeat: true
         triggeredOnStart: true
+
         onTriggered: {
-            uptime.running = true
+            uptime.running = true;
         }
     }
 
-    Text {
-        text: " : "
-        font.pixelSize: 18
-
-        anchors {
-            top: parent.top
-            left: parent.left
-            leftMargin: 105
-            topMargin: 12
-        }
-    }
     Text {
         text: root.distroName
         font.pixelSize: 15
+        color: "#E6E6E6"
 
         anchors {
             top: parent.top
             left: parent.left
-            leftMargin: 137
-            topMargin: 15
+            leftMargin: 20
+            topMargin: 38
         }
     }
+
     Text {
-        text: "󰰮  :"
-        font.pixelSize: 18
+        text: root.uptime
+        font.pixelSize: 15
+        color: "#E6E6E6"
         anchors {
             top: parent.top
             left: parent.left
-            leftMargin: 105
-            topMargin: 37
+            leftMargin: 20
+            topMargin: 63
         }
     }
     Text {
         text: "Sway"
         font.pixelSize: 15
+        color: "#E6E6E6"
 
         anchors {
             top: parent.top
             left: parent.left
-            leftMargin: 137
-            topMargin: 40
+            leftMargin: 20
+            topMargin: 88
         }
     }
-
-    Text {
-        text: "  : "
-        font.pixelSize: 18
-        anchors {
-            top: parent.top
-            left: parent.left
-            leftMargin: 105
-            topMargin: 63
-        }
-    }
-    Text {
-        text: root.uptime
-        font.pixelSize: 15
-
-        anchors {
-            top: parent.top
-            left: parent.left
-            leftMargin: 137
-            topMargin: 66
-        }
-    }
-
 }

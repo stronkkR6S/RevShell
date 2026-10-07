@@ -9,8 +9,19 @@ import Quickshell.Services.Pam
 ShellRoot {
     id: root
 
+    FileView {
+        path: root.wallpaperPath
+
+        watchChanges: true
+
+        onFileChanged: {
+            root.wallpaperVersion++;
+        }
+    }
     property bool locked: false
     property string passwordText: ""
+    property int wallpaperVersion: 0
+    property string wallpaperPath: Quickshell.env("HOME") + "/.config/quickshell/wallpapers/wallpaper.png"
 
     signal clearPassword
 
@@ -78,7 +89,7 @@ ShellRoot {
                 Image {
                     id: wallpaper
 
-                    source: "../wallpapers/wallpaper.png"
+                    source: root.wallpaperPath + "?" + root.wallpaperVersion
 
                     anchors.fill: parent
                     anchors.margins: -40
@@ -87,7 +98,7 @@ ShellRoot {
 
                     smooth: true
                     asynchronous: false
-                    cache: true
+                    // cache: true
                     visible: false
                 }
 
@@ -98,7 +109,7 @@ ShellRoot {
                     source: wallpaper
 
                     blurEnabled: true
-                    blur: 0.8
+                    blur: 0.4
                     blurMax: 32
                 }
 
