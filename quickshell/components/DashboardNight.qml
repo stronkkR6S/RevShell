@@ -73,6 +73,9 @@ Rectangle {
         id: control
         checked: root.isNightLight
         z: 1
+          HoverHandler {
+        cursorShape: Qt.PointingHandCursor
+    }
 
         onToggled: {
             root.isNightLight = control.checked;

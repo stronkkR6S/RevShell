@@ -4,6 +4,12 @@ import Quickshell
 import Quickshell.Wayland
 
 ShellRoot {
+    id: root
+
+    function closeDashboard() {
+        closeTimer.stop();
+        dashboard.visible = false;
+    }
     Timer {
         id: closeTimer
 
@@ -104,20 +110,22 @@ ShellRoot {
                 DashboardBrightness {}
                 DashboardVolume {}
                 Dashboardmedia {}
-                DashboardVisu{}
+                DashboardVisu {}
             }
 
             Item {
                 id: page2
                 anchors.fill: parent
                 visible: columnn.selected === 2
-                DashboardNetwork{}
-                DashboardPowerprofile{}
-                DashboardBluetooth{}
-                DashboardNight{}
-                DashboardBattery{}
+                DashboardNetwork {}
+                DashboardPowerprofile {}
+                DashboardBluetooth {}
+                DashboardNight {}
+                DashboardBattery {}
                 // DashboardRecorder{}
-                DashboardTools{}
+                DashboardTools {
+                     closeDashboard: root.closeDashboard
+                }
             }
 
             Item {
@@ -125,10 +133,10 @@ ShellRoot {
                 anchors.fill: parent
                 visible: columnn.selected === 3
 
-                DashboardCpu{}
-                DashboardMemory{}
-                DashboardDisk{}
-                DashboardImageEnv{}
+                DashboardCpu {}
+                DashboardMemory {}
+                DashboardDisk {}
+                DashboardImageEnv {}
             }
 
             Column {
@@ -207,8 +215,8 @@ ShellRoot {
                 from: 0
                 to: Theme.dashboard_width
 
-                duration: 500
-                easing.type: Easing.InOutQuad
+                duration: 400
+                easing.type: Easing.Bezier
             }
         }
     }

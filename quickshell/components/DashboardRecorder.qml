@@ -103,6 +103,7 @@ property string mpvCommand: "file=$(ls -t \"$HOME/vids/recordings\"/*.mp4 2>/dev
 
         MouseArea {
             anchors.fill: parent
+            cursorShape: Qt.PointingHandCursor
 
             onClicked: recorder.running = !recorder.running
         }
@@ -128,6 +129,7 @@ property string mpvCommand: "file=$(ls -t \"$HOME/vids/recordings\"/*.mp4 2>/dev
 
         MouseArea {
             anchors.fill: parent
+            cursorShape: Qt.PointingHandCursor
 
             onClicked: {
                 root.systemAudio = !root.systemAudio;
@@ -155,6 +157,7 @@ property string mpvCommand: "file=$(ls -t \"$HOME/vids/recordings\"/*.mp4 2>/dev
 
         MouseArea {
             anchors.fill: parent
+            cursorShape: Qt.PointingHandCursor
 
             onClicked: {
                 playLastRecording.running = true;

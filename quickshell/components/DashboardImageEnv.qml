@@ -37,7 +37,7 @@ Rectangle {
         id: image
 
         anchors.fill: parent
-
+        //internally wallpaper.png?1 2 3...
         source: root.wallpaperPath + "?" + root.wallpaperVersion
         cache: true
         smooth: true

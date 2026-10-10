@@ -109,7 +109,7 @@ ShellRoot {
                     source: wallpaper
 
                     blurEnabled: true
-                    blur: 0.4
+                    blur: 0.6
                     blurMax: 32
                 }
 

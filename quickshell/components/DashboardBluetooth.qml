@@ -29,6 +29,9 @@ Rectangle {
             background.bluetoothEnabled = control.checked;
             Quickshell.execDetached(["rfkill", "toggle", "bluetooth"]);
         }
+          HoverHandler {
+        cursorShape: Qt.PointingHandCursor
+    }
 
         anchors {
             top: parent.top

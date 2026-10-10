@@ -6,7 +6,6 @@ import Quickshell.Io
 import Quickshell.Wayland
 import Quickshell.Widgets
 
-//@ pragma IconTheme Papirus
 
 ShellRoot {
     id: root
@@ -245,7 +244,8 @@ ShellRoot {
                             spacing: 10
 
                             Image {
-                                source: "file:///usr/share/icons/Papirus/48x48/apps/" + modelData.icon + ".svg"
+                                // source: "file:///usr/share/icons/Papirus/48x48/apps/" + modelData.icon + ".svg"
+                                source: Quickshell.iconPath(modelData.icon)
 
                                 Layout.preferredWidth: 40
                                 Layout.preferredHeight: 40
@@ -261,6 +261,7 @@ ShellRoot {
                                 font.pixelSize: 19
 
                                 color: "black"
+                                renderType: Text.NativeRendering
 
                                 elide: Text.ElideRight
 
