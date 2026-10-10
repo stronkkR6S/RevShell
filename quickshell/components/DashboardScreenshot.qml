@@ -4,10 +4,12 @@ import Quickshell.Io
 
 Rectangle {
     id: root
+    property var closeDashboard
     property string mpvCommand: "file=$(ls -t \"$HOME/pics/screenshots\"/*.png 2>/dev/null | head -n 1); [ -n \"$file\" ] && mpv --pause \"$file\""
 
-    property string screenshotCommand: "mkdir -p \"$HOME/pics/screenshots\" && sleep 2; grim \"$HOME/pics/screenshots/screenshot-$(/usr/bin/date '+%d-%m-%Y-%H_%M_%S').png\""
-        readonly property string areascreenshotCommand: 'grim -g "$(slurp)" ~/pics/screenshots/area-$(date "+%d-%m-%Y-%H_%M_%S").png'
+    property string screenshotCommand: "mkdir -p \"$HOME/pics/screenshots\" &&  grim \"$HOME/pics/screenshots/screenshot-$(/usr/bin/date '+%d-%m-%Y-%H_%M_%S').png\""
+    property string screenNoti: "$HOME/pics/screenshots/screenshot-$(/usr/bin/date '+%d-%m-%Y-%H_%M_%S').png"
+    readonly property string areascreenshotCommand: 'grim -g "$(slurp)" ~/pics/screenshots/area-$(date "+%d-%m-%Y-%H_%M_%S").png'
     height: 40
     width: 205
     color: Theme.modulefg
@@ -45,8 +47,11 @@ Rectangle {
         MouseArea {
             id: full
             anchors.fill: parent
+            cursorShape: Qt.PointingHandCursor
             onClicked: {
                 fullscreen.running = true;
+                Quickshell.execDetached(["notify-send", "Screenshot", "Copied to clipboard"]);
+                root.closeDashboard();
             }
         }
     }
@@ -63,8 +68,9 @@ Rectangle {
         MouseArea {
             id: area
             anchors.fill: parent
+            cursorShape: Qt.PointingHandCursor
             onClicked: {
-                Quickshell.execDetached(["sh", "-c", root.areascreenshotCommand]);
+                Quickshell.execDetached(["sh", "-c", root.areascreenshotCommand + ' && notify-send "Screenshot" "Region copied to clipboard"']);
             }
         }
     }
@@ -82,6 +88,7 @@ Rectangle {
         MouseArea {
             id: showimage
             anchors.fill: parent
+            cursorShape: Qt.PointingHandCursor
             onClicked: {
                 viewlastimage.running = true;
             }

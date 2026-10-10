@@ -1,10 +1,12 @@
+//@ pragma UseQApplication
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
-import qs.components
+import "../components"
 
-ShellRoot{
+ShellRoot {
     PanelWindow {
+        id: bar
         WlrLayershell.layer: WlrLayer.Bottom
         anchors {
             top: true
@@ -25,8 +27,10 @@ ShellRoot{
         CombinedBP {}
         Workspace {}
         Network {}
-        Dashboard{}
+        Dashboard {}
+        Systemtray {
+            dashboard_window: bar
+        }
     }
-    Border{}
-
+    Border {}
 }

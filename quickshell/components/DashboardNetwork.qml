@@ -31,6 +31,9 @@ Rectangle {
             background.wifiEnabled = control.checked;
             Quickshell.execDetached(["rfkill", "toggle", "wifi"]);
         }
+          HoverHandler {
+        cursorShape: Qt.PointingHandCursor
+    }
 
         anchors {
             top: parent.top

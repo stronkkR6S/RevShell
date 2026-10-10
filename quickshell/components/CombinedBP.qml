@@ -156,6 +156,7 @@ Rectangle {
 
             MouseArea {
                 anchors.fill: parent
+                cursorShape: Qt.PointingHandCursor
 
                 onClicked: {
                     powermenupop.active = !powermenupop.active

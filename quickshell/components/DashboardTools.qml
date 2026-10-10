@@ -2,6 +2,8 @@ import QtQuick
 import Quickshell
 
 Rectangle {
+id: root
+property var closeDashboard
     color: Theme.customGray
     width: 215
     height: 275
@@ -14,7 +16,9 @@ Rectangle {
     }
 
     DashboardRecorder {}
-    DashboardScreenshot{}
+    DashboardScreenshot{
+         closeDashboard: root.closeDashboard
+    }
     DashboardMotiv{}
 }
 

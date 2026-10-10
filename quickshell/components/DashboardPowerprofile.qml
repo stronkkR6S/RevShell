@@ -67,7 +67,7 @@ Rectangle {
             leftMargin: 20
         }
         Rectangle {
-        id: performance
+            id: performance
             Layout.preferredHeight: 25
             Layout.preferredWidth: 25
             color: "transparent"
@@ -76,6 +76,7 @@ Rectangle {
             radius: 20
             MouseArea {
                 anchors.fill: parent
+                cursorShape: Qt.PointingHandCursor
                 onClicked: {
                     Quickshell.execDetached(["powerprofilesctl", "set", "performance"]);
                 }
@@ -90,7 +91,7 @@ Rectangle {
             }
         }
         Rectangle {
-        id: balanced
+            id: balanced
             Layout.preferredHeight: 25
             Layout.preferredWidth: 25
             color: "transparent"
@@ -99,6 +100,7 @@ Rectangle {
             radius: 20
             MouseArea {
                 anchors.fill: parent
+                cursorShape: Qt.PointingHandCursor
                 onClicked: {
                     Quickshell.execDetached(["powerprofilesctl", "set", "balanced"]);
                 }
@@ -113,7 +115,7 @@ Rectangle {
             }
         }
         Rectangle {
-        id: powersaver
+            id: powersaver
             Layout.preferredHeight: 25
             Layout.preferredWidth: 25
             color: "transparent"
@@ -122,6 +124,7 @@ Rectangle {
             radius: 20
             MouseArea {
                 anchors.fill: parent
+                cursorShape: Qt.PointingHandCursor
                 onClicked: {
                     Quickshell.execDetached(["powerprofilesctl", "set", "power-saver"]);
                 }

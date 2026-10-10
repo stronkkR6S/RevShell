@@ -182,6 +182,7 @@ Rectangle {
                 }
                 MouseArea {
                     anchors.fill: parent
+                    cursorShape: Qt.PointingHandCursor
                     onClicked: {
                         dashboardMedia.player.previous();
                     }
@@ -201,6 +202,7 @@ Rectangle {
                 }
 
                 MouseArea {
+                    cursorShape: Qt.PointingHandCursor
                     anchors.fill: parent
                     onClicked: {
                         dashboardMedia.player.togglePlaying();
@@ -220,6 +222,7 @@ Rectangle {
                     text: "󰼦"
                 }
                 MouseArea {
+                    cursorShape: Qt.PointingHandCursor
                     anchors.fill: parent
                     onClicked: {
                         dashboardMedia.player.next();
@@ -274,6 +277,7 @@ Rectangle {
                 }
 
                 MouseArea {
+                    cursorShape: Qt.PointingHandCursor
                     anchors.fill: parent
 
                     onClicked: {
