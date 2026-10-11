@@ -100,7 +100,7 @@ PanelWindow {
         property: "opacity"
         from: 0
         to: 1
-        duration: 600
+        duration: 500
         easing.type: Easing.InOutCubic
 
         onFinished: wallpaper.finishTransition()
@@ -112,7 +112,7 @@ PanelWindow {
         property: "opacity"
         from: 0
         to: 1
-        duration: 300
+        duration: 500
         easing.type: Easing.InOutCubic
 
         onFinished: wallpaper.finishTransition()

@@ -74,7 +74,7 @@ PanelWindow {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
 
-                    color: activeFocus ? Theme.vibrantOrange : "transparent"
+                    color: activeFocus ? Theme.blue: "transparent"
 
                     topLeftRadius: 22
                     bottomLeftRadius: 22

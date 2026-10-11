@@ -9,8 +9,6 @@ import Quickshell.Services.Notifications
 Scope {
     id: root
 
-    // property alias history: historyModel
-    // property alias trackedNotifications: server.trackedNotifications
     property bool isNotiSilent: false
 
     ListModel {
@@ -140,28 +138,35 @@ Scope {
     PanelWindow {
         id: panelBox
 
+        property bool opened: false
         implicitWidth: 400
         implicitHeight: 500
 
         exclusionMode: ExclusionMode.Ignore
         WlrLayershell.layer: WlrLayer.Overlay
         color: "transparent"
-        visible: false
+        visible: opened || panelAnimation.running
 
         anchors {
             right: true
         }
 
-        margins {
-            right: 20
-        }
-
         Rectangle {
-            anchors.fill: parent
-            radius: 15
+            anchors.right: parent.right
+            width: panelBox.opened ? 400 : 0
+            height: parent.height
+            topLeftRadius: 15
+            bottomLeftRadius: 15
             color: Theme.background
             border.width: 2
+            clip: true
             border.color: Theme.blue
+            Behavior on width {
+                NumberAnimation {
+                    duration: 200
+                    easing.type: Easing.InOutCubic
+                }
+            }
 
             Text {
                 anchors.centerIn: parent
@@ -319,12 +324,11 @@ Scope {
             }
         }
     }
-
     IpcHandler {
         target: "noticenter"
 
         function toggle(): void {
-            panelBox.visible = !panelBox.visible;
+            panelBox.opened = !panelBox.opened;
         }
     }
 }
