@@ -9,12 +9,13 @@ PanelWindow {
 property url wallpaperPath: Qt.resolvedUrl("../wallpapers/wallpaper.png")
 
     property int wallpaperVersion: 0
-    FileView {
-        path: wallpaper.wallpaperPath
-        watchChanges: true
-        onFileChanged:  wallpaper.wallpaperVersion++;
-        
+    IpcHandler {
+    target: "wallpaper"
+
+    function reload(): void {
+        wallpaper.wallpaperVersion++;
     }
+}
     anchors {
         left: true
         right: true

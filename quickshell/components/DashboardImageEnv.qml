@@ -24,14 +24,14 @@ Rectangle {
     color: "transparent"
     clip: true
 
-    FileView {
-        path: root.wallpaperPath
-        watchChanges: true
+    IpcHandler {
+    target: "dashboardImage"
 
-        onFileChanged: {
-            root.wallpaperVersion++;
-        }
+    function reload(): void {
+        root.wallpaperVersion++;
     }
+}
+
 
     Image {
         id: image

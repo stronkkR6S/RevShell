@@ -8,16 +8,16 @@ import Quickshell.Services.Pam
 
 ShellRoot {
     id: root
+    IpcHandler {
+        target: "lockscreen"
 
-    FileView {
-        path: root.wallpaperPath
-
-        watchChanges: true
-
-        onFileChanged: {
+        function reload(): void {
             root.wallpaperVersion++;
+            root.locked = true;
+            
         }
     }
+
     property bool locked: false
     property string passwordText: ""
     property int wallpaperVersion: 0
@@ -32,13 +32,6 @@ ShellRoot {
         pam.start();
     }
 
-    IpcHandler {
-        target: "lockscreen"
-
-        function toggle() {
-            root.locked = true;
-        }
-    }
 
     PamContext {
         id: pam

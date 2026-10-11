@@ -19,7 +19,7 @@ ShellRoot {
     property int targetPanelHeight: Math.min(Math.max(20 + 50 + 15 + (filteredApps.values.length * appHeight) + (Math.max(filteredApps.values.length - 1, 0) * appSpacing) + 20, minPanelHeight), maxPanelHeight)
 
     IpcHandler {
-        target: "launcher"
+        target: "appLauncher"
 
         function toggle(): void {
             launcherWindow.visible = !launcherWindow.visible;

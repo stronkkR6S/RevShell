@@ -3,9 +3,10 @@
 
 import QtQuick
 import Quickshell
+import Quickshell.Io
 import "components"
 
-Scope {
+ShellRoot {
     id: root
 
     Bar {}
@@ -14,5 +15,22 @@ Scope {
     Lockscreen {}
 
     NotificationSystem {}
-    Wallpaper{}
+    Wallpaper {}
+
+    LazyLoader {
+        id: wallpaperswitcherLoader
+        active: false
+
+        component: WallpaperSwitcher {
+            closeSwitcher: () => wallpaperswitcherLoader.active = false
+        }
+    }
+
+    IpcHandler {
+        target: "wallpaperswitcher"
+
+        function toggle(): void {
+            wallpaperswitcherLoader.active = !wallpaperswitcherLoader.active;
+        }
+    }
 }

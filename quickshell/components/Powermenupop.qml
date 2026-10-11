@@ -3,6 +3,7 @@ import QtQuick.Layouts
 import Quickshell
 import Quickshell.Wayland
 import Quickshell.Io
+
 PanelWindow {
     id: toplevel
 
@@ -14,18 +15,29 @@ PanelWindow {
 
     color: "transparent"
 
-    implicitWidth: 120
+    implicitWidth: 85
     implicitHeight: 400
 
     anchors.right: true
 
     Rectangle {
-        anchors.fill: parent
-        anchors.rightMargin: 30
+        anchors.right: parent.right
+        height: parent.height
+        width: 0
+        clip: true
+        Component.onCompleted: {
+            width = 85;
+        }
+        Behavior on width {
+            NumberAnimation {
+                duration: 200
+                easing.type: Easing.InOutCubic
+            }
+        }
 
-        color: Theme.powermenubackground
-        radius: 25
-
+        color: Theme.background
+        topLeftRadius: 20
+        bottomLeftRadius: 20
         ColumnLayout {
             anchors.fill: parent
             spacing: 0
@@ -64,7 +76,10 @@ PanelWindow {
 
                     color: activeFocus ? Theme.vibrantOrange : "transparent"
 
-                    radius: 25
+                    topLeftRadius: 22
+                    bottomLeftRadius: 22
+                    border.width: 2
+                    border.color: Theme.background
                     focus: index === 0
 
                     Text {
@@ -112,4 +127,3 @@ PanelWindow {
         }
     }
 }
-
